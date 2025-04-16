@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Appointments</title>
+</head>
+<body>
+    <h2>Appointments List</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Patient</th>
+                <th>Doctor</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appointment in appointments %}
+            <tr>
+                <td>{{ appointment.patient.name }}</td>
+                <td>{{ appointment.doctor.name }}</td>
+                <td>{{ appointment.date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="{{ url_for('add_appointment') }}">Add New Appointment</a>
+</body>
+</html>

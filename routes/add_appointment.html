@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Appointment</title>
+</head>
+<body>
+    <h2>Add Appointment</h2>
+    <form method="POST">
+        <label for="patient_id">Patient:</label>
+        <select name="patient_id" id="patient_id" required>
+            {% for patient in patients %}
+            <option value="{{ patient.id }}">{{ patient.name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="doctor_id">Doctor:</label>
+        <select name="doctor_id" id="doctor_id" required>
+            {% for doctor in doctors %}
+            <option value="{{ doctor.id }}">{{ doctor.name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="date">Date:</label>
+        <input type="date" name="date" required>
+        <br>
+        <button type="submit">Add Appointment</button>
+    </form>
+    <br>
+    <a href="{{ url_for('manage_appointments') }}">Back to Appointments</a>
+</body>
+</html>

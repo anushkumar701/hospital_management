@@ -1,0 +1,8 @@
+<h1>All Patients</h1>
+<a href="/admin/patients/add">Add New Patient</a>
+<ul>
+    {% for p in patients %}
+        <li>{{ p.name }} | {{ p.age }} | {{ p.gender }} | {{ p.ailment }}</li>
+    {% endfor %}
+</ul>
+<a href="/admin">Back to Admin Dashboard</a>

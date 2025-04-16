@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Doctors</title>
+</head>
+<body>
+  <h2>Doctors</h2>
+  <a href="/admin/doctors/add">Add New Doctor</a>
+  <ul>
+      {% for doctor in doctors %}
+      <li>{{ doctor.name }} | {{ doctor.specialization }}</li>
+      {% endfor %}
+  </ul>
+  <a href="/dashboard_admin">Back to Dashboard</a>
+</body>
+</html>
