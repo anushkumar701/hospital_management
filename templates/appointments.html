@@ -2,23 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Appointments</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        a.button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        a.button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h1>Manage Appointments</h1>
+    <h2>Appointments List</h2>
 
-    <a href="{{ url_for('add_appointment') }}">Add New Appointment</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Patient Name</th>
+                <th>Ailment</th>
+                <th>Doctor Name</th>
+                <th>Specialization</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appointment in appointments %}
+            <tr>
+                <td>{{ appointment.patient.name }}</td>
+                <td>{{ appointment.patient.ailment }}</td>
+                <td>{{ appointment.doctor.name }}</td>
+                <td>{{ appointment.doctor.specialization }}</td>
+                <td>{{ appointment.date.strftime('%Y-%m-%d %H:%M') }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
-    <h2>Existing Appointments</h2>
-    <ul>
-        {% for appointment in appointments %}
-            <li>
-                Patient: {{ appointment.patient.name }} - Doctor: {{ appointment.doctor.name }} on {{ appointment.date }}
-            </li>
-        {% else %}
-            <p>No appointments available.</p>
-        {% endfor %}
-    </ul>
+    <a href="{{ url_for('add_appointment') }}" class="button">Add New Appointment</a>
 </body>
 </html>

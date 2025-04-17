@@ -1,3 +1,32 @@
-<h1>Welcome Patient</h1>
-<p>Patient dashboard</p>
-<a href="/logout">Logout</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Dashboard</title>
+</head>
+<body>
+    <h1>Welcome Patient</h1>
+    <p>Patient Dashboard</p>
+    <a href="{{ url_for('logout') }}">Logout</a>
+
+    <h2>My Appointments</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Doctor Name</th>
+                <th>Specialization</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appointment in appointments %}
+            <tr>
+                <td>{{ appointment.doctor.name }}</td>
+                <td>{{ appointment.doctor.specialization }}</td>
+                <td>{{ appointment.date.strftime('%Y-%m-%d %H:%M') }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
